@@ -1,0 +1,53 @@
+<div class="container h-100">
+    <br>
+    <div class="row h-100 justify-content-center align-items-center">
+        <aside class="col-sm-12">
+            <div class="card m-3">
+                <h5 class="card-header text-center"><a href="https://hn.algolia.com/" target="_blank">Hacker News
+                        Stories</a></h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto">
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Search</div>
+                                        </div>
+                                        <input type="text" class="form-control" id="inlineFormInputGroup"
+                                            placeholder="Search stories by title, url or author" #searchInput>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center" *ngIf="isLoader">
+                                <img src="/assets/images/loading-load.gif" width="300">
+                            </div>
+                            <div class="table-responsive" *ngIf="!isLoader">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>author</th>
+                                            <th>title</th>
+                                            <th>url</th>
+                                            <th>created_at</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of stories;let i = index">
+                                            <td>{{i+1}}</td>
+                                            <td>{{data?.author}}</td>
+                                            <td>{{data?.title}}</td>
+                                            <td><a [href]="data?.url" target="_blank">Link</a></td>
+                                            <td>{{data?.createdAt | date: 'dd/MM/yyyy'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
