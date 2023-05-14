@@ -11,8 +11,8 @@ export class StoriesService {
     private _apiService: ApiService
   ) { }
 
-  getStories() {
-    const url = `${API_ENDPOINTS.STORIES}?tags=story`;
+  getStories(searchText) {
+    const url = `${API_ENDPOINTS.STORIES}?tags=story&query=${searchText}`;
     return this._apiService.get(url);
   }
 }
